@@ -14,17 +14,34 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Profile View")
+            VStack(){
+                if let user = viewModel.user {
+                    List {
+                        HStack{
+                            Image(systemName: "person")
+                                .foregroundColor(.blue)
+                            Text("Ad Soyad:")
+                        }
+                        HStack {
+                            Image(systemName: "mail")
+                                .foregroundColor(.blue)
+                            Text("Email:")
+                            Text(user.email)
+                        }
+                        HStack {
+                            Image(systemName: "calendar")
+                                .foregroundColor(.blue)
+                            Text("Üyelik Tarihi:")
+                            Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
+                            
+                        }
+                    }
+                    .listStyle(.plain)
+                }
             }
             .toolbar{
                 Button {
-                    
-                    do {
-                        try Auth.auth().signOut()
-                    } catch let signOutError as NSError {
-                        print("Error signing out: %@", signOutError)
-                    }
+                    viewModel.logout()
                 } label: {
                     HStack {
                         Text("Çıkış Yap")
@@ -32,6 +49,9 @@ struct ProfileView: View {
                 }
             }
             .navigationTitle("Hesabım")
+        }
+        .onAppear{
+            viewModel.fetchUser()
         }
     }
 }

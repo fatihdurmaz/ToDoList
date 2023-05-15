@@ -16,16 +16,19 @@ struct MainView: View {
             TabView {
                 ToDoListView(userId: viewmodel.currentUserId)
                     .tabItem {
-                        Label("Başlangıç", systemImage: "house")
+                        Label("Yapılacaklar", systemImage: "house")
                     }
+                
                 ProfileView()
                     .tabItem {
                         Label("Hesabım", systemImage: "person.circle")
                     }
             }
+            
         }else{
             LoginView()
         }
+        
     }
 }
 

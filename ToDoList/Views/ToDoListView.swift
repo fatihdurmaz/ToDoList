@@ -7,20 +7,30 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestoreSwift
 
 struct ToDoListView: View {
-    @StateObject var viewModel = ToDoListViewModel()
-    
-    private let userId: String
+    @StateObject var viewModel : ToDoListViewModel
+    @FirestoreQuery var items: [ToDoListItem]
     
     init(userId: String) {
-        self.userId = userId
+        self._items = FirestoreQuery(collectionPath: "users/\(userId)/yapilacaklar")
+        self._viewModel = StateObject(wrappedValue: ToDoListViewModel(userID: userId))
     }
     
     var body: some View {
         NavigationView {
             VStack {
-                Text("Yapılacaklar View")
+                List(items) { item in
+                    ToDoListItemView(item: item)
+                        .swipeActions {
+                            Button("Sil") {
+                                viewModel.delete(id: item.id)
+                            }
+                            .tint(.red)
+                        }
+                }
+                .listStyle(.plain)
             }
             .navigationTitle("Yapılacaklar")
             .toolbar {
@@ -39,6 +49,6 @@ struct ToDoListView: View {
 
 struct ToDoListView_Previews: PreviewProvider {
     static var previews: some View {
-        ToDoListView(userId: "")
+        ToDoListView(userId: "TGcAd6IddrbCUxNOgZMRWXu3Jmn2")
     }
 }

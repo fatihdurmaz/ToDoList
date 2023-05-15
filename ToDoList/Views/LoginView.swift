@@ -10,7 +10,7 @@ import AlertToast
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
-    
+
     var body: some View {
         NavigationView {
             VStack {
