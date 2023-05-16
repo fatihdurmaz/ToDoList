@@ -2,9 +2,8 @@
 
 Bu proje, SwiftUI ve MVVM mimarisini kullanarak geliştirilmiş bir ToDo List uygulamasıdır. Firebase kullanılarak kullanıcılar, yapılacak görevleri ekleyebilir, düzenleyebilir ve silebilirler.
 
-3. parti kütüphane ve paketler;
-  FirebaseAuth
-  FirebaseFireStore
-  FirebaseFireStoreSwift
-  AlertToast
+1. FirebaseAuth
+2. FirebaseFireStore
+3. FirebaseFireStoreSwift
+4. AlertToast
 
