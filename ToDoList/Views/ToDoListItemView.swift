@@ -25,9 +25,11 @@ struct ToDoListItemView: View {
                 viewModel.toogleIsDone(item: item)
             } label: {
                 Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(item.isDone ? .green : .gray)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 25, height: 25)
+                    .foregroundColor(item.isDone ? .green : .black)
             }
-
         }
     }
 }

@@ -18,32 +18,39 @@ struct RegisterView: View {
                 HeaderView(title: "Kaydol", subTitle: "Yapılacakları düzenlemeye başla", angle: -15, background: .teal)
                 
                 Form {
-                    TextField("Ad Soyad", text: $viewModel.name)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                    HStack {
+                        Image(systemName: "person")
+                        TextField("Ad Soyad", text: $viewModel.name)
+                            .textFieldStyle(DefaultTextFieldStyle())
                         .autocorrectionDisabled()
+                    }
                     
-                    TextField("Email", text: $viewModel.email)
-                        .textFieldStyle(DefaultTextFieldStyle())
-                        .autocorrectionDisabled()
+                    HStack {
+                        Image(systemName: "mail")
+                        TextField("Email", text: $viewModel.email)
+                            .textFieldStyle(DefaultTextFieldStyle())
+                            .autocorrectionDisabled()
                         .autocapitalization(.none)
+                    }
                     
-                    SecureField("Şifre", text: $viewModel.password)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                    HStack {
+                        Image(systemName: "lock")
+                        SecureField("Şifre", text: $viewModel.password)
+                            .textFieldStyle(DefaultTextFieldStyle())
+                    }
                     
-                    TLButton(title: "Hesap Oluştur", background: .teal) {
+                    TLButton(title: "Hesap Oluştur", background: .primary) {
                         viewModel.register()
                     }
                     .padding()
                 }
-                .offset(y:-50)
+                .offset(y:-75)
             }
+            .ignoresSafeArea()
         }
-        .snackbar(isShowing: $viewModel.showError, title: viewModel.errorMessage, style: .warning)
-        /*
          .toast(isPresenting: $viewModel.showError) {
-         AlertToast(type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
+             AlertToast(displayMode:.hud,type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
          }
-         */
     }
     
 }

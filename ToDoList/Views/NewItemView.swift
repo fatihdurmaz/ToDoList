@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftUISnackbar
+import AlertToast
 
 struct NewItemView: View {
     @StateObject var viewModel = NewItemViewModel()
@@ -42,7 +43,9 @@ struct NewItemView: View {
                 }
             }
         }
-        .snackbar(isShowing: $viewModel.showError, title: "Uyarı",text:viewModel.errorMessage, style: .warning)
+        .toast(isPresenting: $viewModel.showError) {
+            AlertToast(displayMode:.hud,type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
+        }
     }
 }
 

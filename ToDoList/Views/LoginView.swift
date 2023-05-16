@@ -10,43 +10,48 @@ import AlertToast
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
-
+    
     var body: some View {
         NavigationView {
             VStack {
                 //Header
-                HeaderView(title: "Yapılacaklar", subTitle: "Neler yapacaksın?", angle: 15, background: .brown)
+                HeaderView(title: "Yapılacaklar", subTitle: "Neler yapacaksın?", angle: 15, background: .pink)
                 
                 // Login Form
                 Form {
-                    TextField("Email", text: $viewModel.email)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                    HStack {
+                        Image(systemName: "mail")
+                        TextField("Email", text: $viewModel.email)
+                            .textFieldStyle(DefaultTextFieldStyle())
                         .autocapitalization(.none)
+                    }
                     
-                    SecureField("Şifre", text: $viewModel.password)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                    HStack {
+                        Image(systemName: "lock")
+                        SecureField("Şifre", text: $viewModel.password)
+                            .textFieldStyle(DefaultTextFieldStyle())
+                    }
                     
-                    TLButton(title: "Giriş Yap", background: .brown) {
+                    TLButton(title: "Giriş Yap", background: .primary) {
                         viewModel.login()
                     }
                     .padding()
                 }
-                .offset(y:-50)
+                .offset(y:-75)
                 
-                VStack {
+                VStack{
                     Text("Henüz kullanmaya başlamadın mı?")
                         .bold()
                     NavigationLink("Yeni Hesap Oluştur", destination: RegisterView())
                 }
-                .padding(.bottom, 50)
+                .offset(y:-50)
             }
+            .ignoresSafeArea()
+            
         }
-        .snackbar(isShowing: $viewModel.showError, title: "Uyarı",text:viewModel.errorMessage, style: .warning)
-        /*
-         .toast(isPresenting: $viewModel.showError) {
-         AlertToast(displayMode:.hud,type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
-         }
-         */
+        .toast(isPresenting: $viewModel.showError) {
+            AlertToast(displayMode:.hud,type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
+        }
         
     }
     
