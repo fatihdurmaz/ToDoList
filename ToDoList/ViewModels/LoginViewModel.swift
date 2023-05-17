@@ -22,31 +22,38 @@ class LoginViewModel: ObservableObject {
         guard validate() else {
             return
         }
-        Auth.auth().signIn(withEmail: email, password: password)
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            if let error = error {
+                // Hata durumunda yapılacak işlemler
+                print(error.localizedDescription)
+                self.errorMessage = "Giriş yaparken hata oluştu."
+                self.showError = true
+            }
+        }
     }
-    
-    private func validate() -> Bool{
-        errorMessage = ""
-        showError = false
-        guard !email.isEmpty, !password.isEmpty else {
-            errorMessage = "Tüm alanları doldurunuz."
-            showError = true
-            return false
+        private func validate() -> Bool{
+            errorMessage = ""
+            showError = false
+            guard !email.isEmpty, !password.isEmpty else {
+                errorMessage = "Tüm alanları doldurunuz."
+                showError = true
+                return false
+            }
+            
+            guard email.contains("@") && email.contains(".") else {
+                errorMessage = "Geçerli bir email adresi giriniz."
+                showError = true
+                return false
+            }
+            return true
         }
         
-        guard email.contains("@") && email.contains(".") else {
-            errorMessage = "Geçerli bir email adresi giriniz."
-            showError = true
-            return false
-        }
-        return true
-    }
-    
-    private func logout(){
-        do {
-            try Auth.auth().signOut()
-        } catch let error{
-            print("Error signing out: \(error.localizedDescription)")
+        private func logout(){
+            do {
+                try Auth.auth().signOut()
+            } catch let error{
+                print("Error signing out: \(error.localizedDescription)")
+            }
         }
     }
-}

@@ -10,7 +10,8 @@ import AlertToast
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
-    
+    @State private var showProgressView = false
+
     var body: some View {
         NavigationView {
             VStack {
@@ -39,15 +40,22 @@ struct LoginView: View {
                 }
                 .offset(y:-75)
                 
+
+                
                 VStack{
                     Text("Henüz kullanmaya başlamadın mı?")
                         .bold()
                     NavigationLink("Yeni Hesap Oluştur", destination: RegisterView())
                 }
                 .offset(y:-50)
+                
+                
             }
             .ignoresSafeArea()
             
+            if showProgressView {
+                ProgressView() // İlerleme göstergesini göster
+            }
         }
         .toast(isPresenting: $viewModel.showError) {
             AlertToast(displayMode:.hud,type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
