@@ -5,5 +5,6 @@ Bu proje, SwiftUI ve MVVM mimarisini kullanarak geliştirilmiş bir ToDo List uy
 1. FirebaseAuth
 2. FirebaseFireStore
 3. FirebaseFireStoreSwift
-4. AlertToast
+4. LottieForSwiftUI
+5. AlertToast
 
