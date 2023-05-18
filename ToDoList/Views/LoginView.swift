@@ -7,16 +7,22 @@
 
 import SwiftUI
 import AlertToast
+import LottieForSwiftUI
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
     @State private var showProgressView = false
-
+    
     var body: some View {
         NavigationView {
             VStack {
                 //Header
-                HeaderView(title: "Yapılacaklar", subTitle: "Neler yapacaksın?", angle: 15, background: .pink)
+                ZStack {
+                    HeaderView(title: "Yapılacaklar", subTitle: "Neler yapacaksın?", angle: 15, background: .pink)
+                    LottieView(fileName: "todo")
+                        .frame(width: UIScreen.main.bounds.width * 0.6)
+                        .offset(y:40)
+                }
                 
                 // Login Form
                 Form {
@@ -24,7 +30,7 @@ struct LoginView: View {
                         Image(systemName: "mail")
                         TextField("Email", text: $viewModel.email)
                             .textFieldStyle(DefaultTextFieldStyle())
-                        .autocapitalization(.none)
+                            .autocapitalization(.none)
                     }
                     
                     HStack {
@@ -40,7 +46,7 @@ struct LoginView: View {
                 }
                 .offset(y:-75)
                 
-
+                
                 
                 VStack{
                     Text("Henüz kullanmaya başlamadın mı?")

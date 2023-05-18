@@ -8,6 +8,7 @@
 import SwiftUI
 import AlertToast
 import SwiftUISnackbar
+import LottieForSwiftUI
 
 struct RegisterView: View {
     @StateObject var viewModel = RegisterViewModel()
@@ -15,7 +16,12 @@ struct RegisterView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HeaderView(title: "Kaydol", subTitle: "Yapılacakları düzenlemeye başla", angle: -15, background: .teal)
+                ZStack {
+                    HeaderView(title: "Kaydol", subTitle: "Yapılacakları düzenlemeye başla", angle: -15, background: .teal)
+                    LottieView(fileName: "register")
+                        .frame(width: UIScreen.main.bounds.width * 0.6)
+                        .offset(y:40)
+                }
                 
                 Form {
                     HStack {
