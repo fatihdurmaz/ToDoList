@@ -11,6 +11,7 @@ import FirebaseAuth
 struct MainView: View {
     @StateObject var viewmodel = MainViewModel()
     
+    
     var body: some View {
         if viewmodel.isSignedIn, !viewmodel.currentUserId.isEmpty {
             TabView {
