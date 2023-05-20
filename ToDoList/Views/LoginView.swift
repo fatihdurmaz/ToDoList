@@ -19,7 +19,7 @@ struct LoginView: View {
                 //Header
                 ZStack {
                     HeaderView(title: "Yapılacaklar", subTitle: "Neler yapacaksın?", angle: 15, background: .pink)
-                    LottieView(fileName: "todo")
+                    LottieView(fileName: "register")
                         .frame(width: UIScreen.main.bounds.width * 0.6)
                         .offset(y:40)
                 }
