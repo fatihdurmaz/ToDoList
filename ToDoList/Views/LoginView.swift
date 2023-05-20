@@ -18,7 +18,7 @@ struct LoginView: View {
             VStack {
                 //Header
                 ZStack {
-                    HeaderView(title: "Yapılacaklar", subTitle: "Neler yapacaksın?", angle: 15, background: .pink)
+                    HeaderView(title: "login-title", subTitle: "login-subtitle", angle: 15, background: .pink)
                     LottieView(fileName: "register")
                         .frame(width: UIScreen.main.bounds.width * 0.6)
                         .offset(y:40)
@@ -35,11 +35,11 @@ struct LoginView: View {
                     
                     HStack {
                         Image(systemName: "lock")
-                        SecureField("Şifre", text: $viewModel.password)
+                        SecureField("password", text: $viewModel.password)
                             .textFieldStyle(DefaultTextFieldStyle())
                     }
                     
-                    TLButton(title: "Giriş Yap", background: .primary) {
+                    TLButton(title:"login-button", background: .primary) {
                         viewModel.login()
                     }
                     .padding()
@@ -49,9 +49,9 @@ struct LoginView: View {
                 
                 
                 VStack{
-                    Text("Henüz kullanmaya başlamadın mı?")
+                    Text("new-account-text")
                         .bold()
-                    NavigationLink("Yeni Hesap Oluştur", destination: RegisterView())
+                    NavigationLink("new-account-button", destination: RegisterView())
                 }
                 .offset(y:-50)
                 
@@ -64,7 +64,7 @@ struct LoginView: View {
             }
         }
         .toast(isPresenting: $viewModel.showError) {
-            AlertToast(displayMode:.hud,type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
+            AlertToast(displayMode:.hud,type: .error(.orange), title: "warning", subTitle: viewModel.errorMessage)
         }
         
     }

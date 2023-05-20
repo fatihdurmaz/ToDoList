@@ -20,12 +20,12 @@ struct HeaderView: View {
                 .rotationEffect(Angle(degrees: angle))
             
             VStack {
-                Text(title)
+                Text(LocalizedStringKey(title))
                     .font(.system(size: 40))
                     .foregroundColor(.white)
                     .bold()
                 
-                Text(subTitle)
+                Text(LocalizedStringKey(subTitle))
                     .font(.system(size: 20))
                     .foregroundColor(.white)
             }

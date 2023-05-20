@@ -21,7 +21,7 @@ struct TLButton: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(background)
-                Text(title)
+                Text(LocalizedStringKey(title))
                     .foregroundColor(.white)
                     .bold()
                     .padding(10)

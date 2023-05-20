@@ -17,12 +17,12 @@ struct NewItemView: View {
         NavigationView {
             VStack {
                 Form {
-                    TextField("Başlık", text: $viewModel.title)
+                    TextField("title", text: $viewModel.title)
                     
-                    DatePicker("Tarih", selection: $viewModel.dueDate)
+                    DatePicker("date", selection: $viewModel.dueDate)
                         .datePickerStyle(.graphical)
                     
-                    TLButton(title: "Kaydet", background: .pink) {
+                    TLButton(title: "new-todo-button", background: .pink) {
                         
                         if viewModel.validate {
                             viewModel.save()
@@ -32,7 +32,7 @@ struct NewItemView: View {
                     .padding()
                 }
             }
-            .navigationTitle("Yeni Yapılacak")
+            .navigationTitle("new-todo")
             .toolbar {
                 ToolbarItem (placement: .navigationBarTrailing) {
                     Button {
@@ -44,7 +44,7 @@ struct NewItemView: View {
             }
         }
         .toast(isPresenting: $viewModel.showError) {
-            AlertToast(displayMode:.hud,type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
+            AlertToast(displayMode:.banner(.slide),type: .error(.orange), title: "warning", subTitle: viewModel.errorMessage)
         }
     }
 }

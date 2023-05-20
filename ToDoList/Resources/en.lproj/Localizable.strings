@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  ToDoList
+
+  Created by Fatih Durmaz on 20.05.2023.
+  
+*/
+
+"login-title" = "To Do List";
+"login-subtitle" = "Get things done";
+"login-button" = "Login";
+"register-title" = "Register";
+"register-subtitle" = "Start organizing todo's";
+"register-button" = "Create Account";
+"password" = "Password";
+"name" = "Full Name";
+"logout" = "Logout";
+"todos" = "To Do's";
+"account" = "Account";
+"new-account-button" = "Create An Account";
+"new-account-text" = "New arround here?";
+"delete" = "Delete";
+"new-todo" = "New Todo";
+"warning" = "Warning";
+"title" = "Title";
+"date" = "Due Date";
+"new-todo-button" = "Save";
+"register-date" = "Register Date";
+"tab-todos" = "ToDo's";
+"tab-account" = "Account";

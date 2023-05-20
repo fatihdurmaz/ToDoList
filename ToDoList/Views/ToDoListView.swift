@@ -24,7 +24,7 @@ struct ToDoListView: View {
                 List(items) { item in
                     ToDoListItemView(item: item)
                         .swipeActions {
-                            Button("Sil") {
+                            Button("delete") {
                                 viewModel.delete(id: item.id)
                             }
                             .tint(.red)
@@ -32,7 +32,7 @@ struct ToDoListView: View {
                 }
                 .listStyle(.plain)
             }
-            .navigationTitle("Yapılacaklar")
+            .navigationTitle("todos")
             .toolbar {
                 Button {
                     viewModel.showingNewItemView = true

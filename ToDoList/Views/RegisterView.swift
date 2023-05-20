@@ -17,7 +17,7 @@ struct RegisterView: View {
         NavigationView {
             VStack {
                 ZStack {
-                    HeaderView(title: "Kaydol", subTitle: "Yapılacakları düzenlemeye başla", angle: -15, background: .teal)
+                    HeaderView(title: "register-title", subTitle: "register-subtitle", angle: -15, background: .teal)
                     LottieView(fileName: "register")
                         .frame(width: UIScreen.main.bounds.width * 0.6)
                         .offset(y:40)
@@ -26,7 +26,7 @@ struct RegisterView: View {
                 Form {
                     HStack {
                         Image(systemName: "person")
-                        TextField("Ad Soyad", text: $viewModel.name)
+                        TextField("name", text: $viewModel.name)
                             .textFieldStyle(DefaultTextFieldStyle())
                         .autocorrectionDisabled()
                     }
@@ -41,11 +41,11 @@ struct RegisterView: View {
                     
                     HStack {
                         Image(systemName: "lock")
-                        SecureField("Şifre", text: $viewModel.password)
+                        SecureField("password", text: $viewModel.password)
                             .textFieldStyle(DefaultTextFieldStyle())
                     }
                     
-                    TLButton(title: "Hesap Oluştur", background: .primary) {
+                    TLButton(title: "register-button", background: .primary) {
                         viewModel.register()
                     }
                     .padding()
@@ -55,7 +55,7 @@ struct RegisterView: View {
             .ignoresSafeArea()
         }
          .toast(isPresenting: $viewModel.showError) {
-             AlertToast(displayMode:.hud,type: .error(.red), title: "Uyarı", subTitle: viewModel.errorMessage)
+             AlertToast(displayMode:.hud,type: .error(.red), title: "warning", subTitle: viewModel.errorMessage)
          }
     }
     

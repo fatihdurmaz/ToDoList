@@ -17,26 +17,39 @@ struct ProfileView: View {
             VStack(){
                 if let user = viewModel.user {
                     List {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "person.circle")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                            Spacer()
+                        }
                         HStack{
                             Image(systemName: "person")
-                                .foregroundColor(.blue)
-                            Text("Ad Soyad:")
+                                .foregroundColor(.teal)
+                            Text("name")
+                            Text(user.name)
+                                .bold()
                         }
                         HStack {
                             Image(systemName: "mail")
-                                .foregroundColor(.blue)
+                                .foregroundColor(.teal)
                             Text("Email:")
                             Text(user.email)
+                                .bold()
                         }
                         HStack {
                             Image(systemName: "calendar")
-                                .foregroundColor(.blue)
-                            Text("Üyelik Tarihi:")
+                                .foregroundColor(.teal)
+                            Text("register-date")
                             Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
+                                .bold()
                             
                         }
                     }
                     .listStyle(.plain)
+                }else {
+                    ProgressView()
                 }
             }
             .toolbar{
@@ -44,11 +57,11 @@ struct ProfileView: View {
                     viewModel.logout()
                 } label: {
                     HStack {
-                        Text("Çıkış Yap")
+                        Text("logout")
                     }
                 }
             }
-            .navigationTitle("Hesabım")
+            .navigationTitle("account")
         }
         .onAppear{
             viewModel.fetchUser()

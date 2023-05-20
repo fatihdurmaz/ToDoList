@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  ToDoList
+
+  Created by Fatih Durmaz on 20.05.2023.
+  
+*/
+
+"login-title" = "Yapılacaklar";
+"login-subtitle" = "Neler yapacaksın?";
+"login-button" = "Giriş Yap";
+"register-title" = "Kaydol";
+"register-subtitle" = "Yapılacakları düzenlemeye başla";
+"register-button" = "Hesap Oluştur";
+"password" = "Şifre";
+"name" = "Ad Soyad";
+"logout" = "Çıkış Yap";
+"todos" = "Yapılacaklar";
+"account" = "Hesabım";
+"new-account-button" = "Yeni Hesap Oluştur";
+"new-account-text" = "Henüz kullanmaya başlamadın mı?";
+"delete" = "Sil";
+"new-todo" = "Yeni Yapılacak";
+"warning" = "Uyarı";
+"title" = "Başlık";
+"date" = "Bitiş Tarihi";
+"new-todo-button" = "Kaydet";
+"register-date" = "Üyelik Tarihi";
+"tab-todos" = "Yapılacaklar";
+"tab-account" = "Hesabım";
