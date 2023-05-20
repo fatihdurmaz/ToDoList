@@ -23,11 +23,13 @@ struct ProfileView: View {
                                 .resizable()
                                 .frame(width: 100, height: 100)
                             Spacer()
+                                
                         }
                         HStack{
                             Image(systemName: "person")
                                 .foregroundColor(.teal)
                             Text("name")
+                                
                             Text(user.name)
                                 .bold()
                         }
@@ -44,6 +46,7 @@ struct ProfileView: View {
                             Text("register-date")
                             Text("\(Date(timeIntervalSince1970: user.joined).formatted(date: .abbreviated, time: .shortened))")
                                 .bold()
+                                
                             
                         }
                     }

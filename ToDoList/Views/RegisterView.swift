@@ -18,7 +18,8 @@ struct RegisterView: View {
             VStack {
                 ZStack {
                     HeaderView(title: "register-title", subTitle: "register-subtitle", angle: -15, background: .teal)
-                    LottieView(fileName: "register")
+                    // url animation example
+                    LottieView(url: URL(string: "https://assets7.lottiefiles.com/packages/lf20_nTUQgKOWJh.json")!)
                         .frame(width: UIScreen.main.bounds.width * 0.6)
                         .offset(y:40)
                 }

@@ -19,6 +19,8 @@ struct LoginView: View {
                 //Header
                 ZStack {
                     HeaderView(title: "login-title", subTitle: "login-subtitle", angle: 15, background: .pink)
+                    
+                    // file animation example
                     LottieView(fileName: "register")
                         .frame(width: UIScreen.main.bounds.width * 0.6)
                         .offset(y:40)
